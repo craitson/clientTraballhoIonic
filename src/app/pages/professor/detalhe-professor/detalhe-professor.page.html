@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Detalhes do professor</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <!-- <ion-avatar text-center> -->
+  <!-- <ion-img [src]="professor?.foto" (click)="presentActionSheet()"></ion-img> -->
+
+  <img [src]="professor?.foto" (click)="presentActionSheet()">
+  <!-- </ion-avatar> -->
+
+  <ion-thumbnail slot="start">
+    <ion-img [src]="professor?.foto"></ion-img>
+  </ion-thumbnail>
+  <ion-card>
+    <ion-card-content>
+      <p><b>{{professor?.nome}}</b></p>
+      <br>
+      <p> Data de Nascimento: {{professor?.dataNascimento}}</p>
+      <br>
+      <p>{{professor?.curriculo}}</p>
+      <br>
+
+      <ion-chip color="success" *ngIf="professor?.status == true">
+        <ion-label>Ativo</ion-label>
+      </ion-chip>
+
+      <ion-chip *ngIf="professor?.status == false">
+        <ion-label>Desativado</ion-label>
+      </ion-chip>
+
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button shape="block" color="medium" (click)="editarProfessor(professor)">Editar</ion-button>
+
+
+  <ion-button shape="block" (click)="deletaProf(professor.id)" color="dark">Excluir</ion-button>
+
+</ion-content>

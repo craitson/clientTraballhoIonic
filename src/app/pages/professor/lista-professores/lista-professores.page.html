@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">Lista Professores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-searchbar [(ngModel)]="filtro" (ionInput)="buscar($event)" placeholder="Procurar"></ion-searchbar>
+
+  <ion-spinner class="spinnerCenter" *ngIf="prof == undefined"></ion-spinner>
+
+  <ion-item *ngFor="let professores of prof" (click)="detalhesProfessor(professores)">
+
+    <ion-avatar slot="start">
+      <ion-img [src]="professores?.foto"></ion-img>
+    </ion-avatar>
+    <ion-label>
+      <h2>{{professores?.nome}}</h2>
+    </ion-label>
+
+
+  </ion-item>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Carregando...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="novoProfessor()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>

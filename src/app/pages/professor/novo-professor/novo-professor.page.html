@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="lista-professores"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">Novo Professor</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <br>
+  <form>
+    <!-- <ion-thumbnail class="center" (onclick)="presentActionSheet()">
+      <img src="https://cdn4.iconfinder.com/data/icons/mayssam/512/user-512.png">
+    </ion-thumbnail> -->
+
+
+    <p>
+      <img src="{{foto}}" alt="" />
+    </p>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input type="text" name="nome" class="form-control" [(ngModel)]="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data de Nascimento</ion-label>
+      <ion-datetime display-format="MM/DD/YYYY" name="dataNascimento" class="form-control" [(ngModel)]="dataNascimento"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Currículo</ion-label>
+      <ion-textarea class="form-control" name="curriculo" [(ngModel)]="curriculo"></ion-textarea>
+    </ion-item>
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-toggle [(ngModel)]="status" name="status" (ionChange)="statusOnChange(status)"></ion-toggle>
+    </ion-item>
+    <ion-button shape="block" color="primary" (click)="presentActionSheet()">Tirar Foto</ion-button>
+    <br>
+    <ion-button (click)="enviar(nome, dataNascimento, curriculo)" shape="block" color="success">Criar
+      Professor</ion-button>
+  </form>
+</ion-content>

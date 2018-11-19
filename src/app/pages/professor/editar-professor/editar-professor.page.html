@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="lista-professores"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-align: center">Editar Professor</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding>
+  <br>
+  <form>
+    <ion-input type="hidden" name="id" class="form-control" [(ngModel)]="professor.id"></ion-input>
+    <ion-input type="hidden" name="foto" class="form-control" [(ngModel)]="professor.foto"></ion-input>
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input type="text" name="nome" class="form-control" [(ngModel)]="professor.nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data de Nascimento</ion-label>
+      <ion-datetime display-format="MM/DD/YYYY" name="dataNascimento" class="form-control" [(ngModel)]="professor.dataNascimento"
+        value="{{professor.dataNascimento}}"></ion-datetime>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Currículo</ion-label>
+      <ion-textarea class="form-control" rows="7" name="curriculo" [(ngModel)]="professor.curriculo"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Status</ion-label>
+      <ion-toggle [(ngModel)]="status" name="status" (ionChange)="statusOnChange(status)"></ion-toggle>
+    </ion-item>
+    <br>
+    <ion-button (click)="salvarProf(professor.nome, professor.dataNascimento, professor.curriculo, professor.id, professor.foto)" shape="block" color="success">Alterar
+      Professor</ion-button>
+  </form>
+</ion-content>
